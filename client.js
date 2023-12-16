@@ -4,7 +4,7 @@ const net = require('net');
 const connect = function() {
   const conn = net.createConnection({
     host: 'localhost',
-    port: 50541
+    port: 50541,
   });
   
   // interpret incoming data as text
@@ -12,10 +12,22 @@ const connect = function() {
   conn.on('data', (data) => {
     console.log('Server says: ', data);
   });
-
+  
+  // conn.on('connect', () => {
+  //   console.log('Successfully connected to game server');
+  //   conn.write('Name: NT');
+  //   setTimeout(() => {
+  //     conn.write('Move: up');
+  //   }, 50);
+  //   // Add more setTimeouts for additional commands if needed
+  // });
+  
   conn.on('connect', () => {
     console.log('Successfully connected to game server');
     conn.write('Name: NT');
+    setInterval(() => {
+      conn.write('Move: up');
+    }, 50);
   });
 
   return conn;
