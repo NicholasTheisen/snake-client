@@ -12,7 +12,7 @@ const connect = function() {
   conn.on('data', (data) => {
     console.log('Server says: ', data);
   });
-  
+
   // conn.on('connect', () => {
   //   console.log('Successfully connected to game server');
   //   conn.write('Name: NT');
@@ -26,7 +26,7 @@ const connect = function() {
     console.log('Successfully connected to game server');
     conn.write('Name: NT');
     setInterval(() => {
-      conn.write('Move: up');
+      // conn.write('Move: up');
     }, 50);
   });
 
@@ -35,5 +35,7 @@ const connect = function() {
 
 console.log('Connecting ...');
 connect();
+
+
 
 module.exports = { connect };
