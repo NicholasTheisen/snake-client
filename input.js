@@ -10,6 +10,14 @@ const setupInput = (conn) => {
   return stdin;
 };
 
+const message = {
+  1: 'Hi Everyone!',
+  2: 'Lets Go!',
+  3: 'I am the best.',
+  4: 'Good Game!',
+  5: 'Great Play!'
+}
+
 const handleUserInput = function (key) {
   if (key === '\u0003') {
     process.exit(); // Terminate the game when CTRL + C is pressed
@@ -26,6 +34,9 @@ const handleUserInput = function (key) {
   if (key === 'd') {
     connection.write('Move: right');
   } 
+  if (key in message) {
+    connection.write(`Say: ${message[key]}`);
+  }
 
   // Additional logic for handling other user inputs can be added here
 };
